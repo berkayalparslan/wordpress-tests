@@ -1,6 +1,6 @@
 // @ts-check
 import { test as setup, expect} from '@playwright/test';
-import LoginPage from '../pages/login.page';
+import LoginPage from '../../pages/login.page';
 
 const authFile = 'playwright/.auth/user.json';
 const userName: string = process.env.USER_NAME!;

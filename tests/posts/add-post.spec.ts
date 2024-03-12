@@ -1,6 +1,6 @@
 // @ts-check
 import {test, expect} from '@playwright/test';
-import AddPostPage from '../pages/add-post.page';
+import AddPostPage from '../../pages/add-post.page';
 
 test.use({ storageState: 'playwright/.auth/user.json' });
 
