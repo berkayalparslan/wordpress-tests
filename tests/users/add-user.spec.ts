@@ -3,8 +3,12 @@ import { test, expect } from "@playwright/test";
 import AddUserPage from "../../pages/users/add-user.page";
 import { UserRoles, getUserRoleName } from "../../pages/users/user-roles";
 
+function generateRandomNumber(){  
+  return ((Math.random() * 100) % 10).toString().replace('.', '');
+}
+
 function generateNewUser(userRole: UserRoles) {
-  const randomNr = ((Math.random() * 100) % 10).toString();
+  const randomNr = generateRandomNumber();
   let userName, email, firstName, lastName, website, password;
   firstName = `new${randomNr}`;
   lastName = `user${randomNr}`;
@@ -25,8 +29,9 @@ function generateNewUser(userRole: UserRoles) {
 
 let addUserPage: AddUserPage;
 
+test.use({ storageState: "playwright/.auth/user.json" });
+
 test.describe("add user page", () => {
-  test.use({ storageState: "playwright/.auth/user.json" });
   test.beforeEach(async ({ page }) => {
     addUserPage = new AddUserPage(page);
     await page.goto(`/wp-admin/user-new.php`);
