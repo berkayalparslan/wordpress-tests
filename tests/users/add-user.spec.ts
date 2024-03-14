@@ -2,13 +2,10 @@
 import { test, expect } from "@playwright/test";
 import AddUserPage from "../../pages/users/add-user.page";
 import { UserRoles, getUserRoleName } from "../../pages/users/user-roles";
-
-function generateRandomNumber(){  
-  return ((Math.random() * 100) % 10).toString().replace('.', '');
-}
+import { generateRandomString } from "../../utils/utils";
 
 function generateNewUser(userRole: UserRoles) {
-  const randomNr = generateRandomNumber();
+  const randomNr = generateRandomString();
   let userName, email, firstName, lastName, website, password;
   firstName = `new${randomNr}`;
   lastName = `user${randomNr}`;

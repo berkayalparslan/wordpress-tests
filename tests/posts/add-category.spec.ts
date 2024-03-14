@@ -1,11 +1,8 @@
 // @ts-check
 import { test, expect } from "@playwright/test";
+import { generateRandomString } from "../../utils/utils";
 
 test.use({ storageState: "playwright/.auth/user.json" });
-
-function generateRandomNumber(){
-    return ((Math.random() * 100) % 10).toString().replace('.', '');
-  }
 
 test.describe('add category page', () => {
     test.beforeEach(async({page}) => {
@@ -13,7 +10,7 @@ test.describe('add category page', () => {
     })
 
     test('allows adding a new category', async({page}) => {
-        const randomNumber = generateRandomNumber();
+        const randomNumber = generateRandomString();
         console.log('generated number', randomNumber);
         const categoryName = `New Category ${randomNumber}`;
         const categorySlug = `new-category-${randomNumber}`;
